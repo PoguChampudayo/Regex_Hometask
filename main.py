@@ -27,7 +27,7 @@ def get_data_to_record(raw_file_name:str):
 
 def uniform_phoes(raw_phone:str):
     '''transformes phone number from csv into "+7(999)999-99-99" or "+7(999)999-99-99 доб.9999" format'''
-    phone_pattern = r'(\+7|8)?[\s\(]?[\s\(]?(\d{3})[\s\)-]?[\s-]?(\d{3})-?(\d{2})-?(\d{2})\s?\(?(доб)?.?\s?(\d{4})?\)?'
+    phone_pattern = r'(\+7|8)?[\s\(]*(\d{3})[\s\)-]*(\d{3})[\s\)-]*(\d{2})[\s\)-]*(\d{2})\s?\(?(доб)?.?\s?(\d{4})?\)?'
     if 'доб' in raw_phone:
         return re.sub(phone_pattern, r"+7(\2)\3-\4-\5 \6.\7", raw_phone)
     else:
